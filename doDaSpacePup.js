@@ -32,7 +32,7 @@ G.init = function(){
 
     scene           : new THREE.Scene(),
     camera          : new THREE.PerspectiveCamera( 40 , ar , .01 , 100 ),
-    renderer        : new THREE.WebGLRenderer(),
+    renderer        : new THREE.WebGLRenderer({preserveDrawingBuffer:true}),
     clock           : new THREE.Clock(),
     stats           : new Stats()
 
@@ -40,6 +40,8 @@ G.init = function(){
 
   G.three.renderer.setSize( window.innerWidth, window.innerHeight );
   G.three.renderer.setClearColor( 0x000000 , .3 )
+  G.three.renderer.autoClear = true;
+  G.three.renderer.autoClearColor = false;
   G.three.renderer.domElement.id = "renderer"
   G.three.renderer.setPixelRatio(  2 );
   document.body.appendChild( G.three.renderer.domElement );

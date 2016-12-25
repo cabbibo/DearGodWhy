@@ -93,18 +93,7 @@ float fNoise( vec3 pos ){
 // green fur
 vec3 col1( vec3 ro , vec3 rd ){
 
-  vec3 col = vec3( 0. );
-  for( int i = 0; i<10; i++){
-    vec3 p = ro + rd * .003 * float( i );
-
-     float n = abs(sin( p.x * 1000. )) + abs(sin( p.y * 1000.));//fNoise( p  * 10.2);
-
-    col += n * hsv( n  * .4, 1. , 1. )/10. ;
-
-
-
-  }
-
+  vec3 col = hsv( fNoise(ro* 20.)*100., 1.,1.);
   return col;
 
 }
